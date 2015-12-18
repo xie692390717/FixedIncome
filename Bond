@@ -1,0 +1,19 @@
+k=250;
+for m = 1:k
+    SpotRevised([m],:) = -SpotRate([m],:)+SpotRate([m+1],:) + SpotRate([251],:);
+end
+SpotRevised
+
+for n = 1:k
+    Bond(n)= SpotRevised(n,1)+SpotRevised(n,2)+SpotRevised(n,3);
+end
+Bond
+
+for p = 1:k
+    BondSpread(p) = Bond(p)-Bond(250)
+end
+BondSpread
+
+a = sort(BondSpread,2);
+bar(a)
+    
